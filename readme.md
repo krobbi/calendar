@@ -14,7 +14,8 @@ This is probably not the fastest method of doing so, probably not the best
 method of packaging this, and there are almost certainly libraries that already
 do this.
 
-This is just a nice little coding challenge.
+I would recommend using the built-in `Date` library, but this is just a nice
+little coding challenge that avoids using it.
 
 # License
 Released under the MIT License:  
