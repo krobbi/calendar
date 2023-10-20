@@ -60,10 +60,19 @@ var currentMonth = Month.JAN;
 // The day at the start of the current month on the calendar.
 var startDay = Day.SAT;
 
+// Change the calendar to the next month.
+function nextMonth() {
+	startDay = (startDay + getMonthLength(currentYear, currentMonth)) % Day.count;
+	
+	if (++currentMonth == Month.count) {
+		currentMonth = Month.JAN;
+		currentYear++;
+	}
+}
+
 // Render the calendar to the document.
 function renderCalendar() {
 	document.getElementById("date").innerText = `${Month.names[currentMonth]} ${currentYear}`;
-	console.debug("Calendar rendered.");
 }
 
 // Called when the previous button is pressed.
@@ -74,7 +83,7 @@ function onPreviousButtonPressed() {
 
 // Called when the next button is pressed.
 function onNextButtonPressed() {
-	console.debug("Next button pressed.");
+	nextMonth();
 	renderCalendar();
 }
 
