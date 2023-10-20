@@ -60,6 +60,17 @@ var currentMonth = Month.JAN;
 // The day at the start of the current month on the calendar.
 var startDay = Day.SAT;
 
+// Change the calendar to the previous month.
+function previousMonth() {
+	if (--currentMonth < 0) {
+		currentMonth = Month.DEC;
+		currentYear--;
+	}
+	
+	// TODO: Fix bug with start day.
+	startDay = (startDay + 1 + getMonthLength(currentYear, currentMonth)) % Day.count;
+}
+
 // Change the calendar to the next month.
 function nextMonth() {
 	startDay = (startDay + getMonthLength(currentYear, currentMonth)) % Day.count;
@@ -77,7 +88,7 @@ function renderCalendar() {
 
 // Called when the previous button is pressed.
 function onPreviousButtonPressed() {
-	console.debug("Previous button pressed.");
+	previousMonth();
 	renderCalendar();
 }
 
