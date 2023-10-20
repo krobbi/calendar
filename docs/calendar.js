@@ -84,6 +84,20 @@ function nextMonth() {
 // Render the calendar to the document.
 function renderCalendar() {
 	document.getElementById("date").innerText = `${Month.names[currentMonth]} ${currentYear}`;
+	const cells = document.querySelectorAll("#calendar td");
+	const monthLength = getMonthLength(currentYear, currentMonth);
+	
+	for (let i = 0; i < cells.length; i++) {
+		const cell = cells[i];
+		
+		if (i < startDay || i >= startDay + monthLength) {
+			cell.classList.add("disabled");
+			cell.innerText = "";
+		} else {
+			cell.classList.remove("disabled");
+			cell.innerText = `${i - startDay + 1}`;
+		}
+	}
 }
 
 // Called when the previous button is pressed.
