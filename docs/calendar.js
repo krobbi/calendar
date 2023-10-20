@@ -60,14 +60,22 @@ var currentMonth = Month.JAN;
 // The day at the start of the current month on the calendar.
 var startDay = Day.SAT;
 
+// Render the calendar to the document.
+function renderCalendar() {
+	document.getElementById("date").innerText = `${Month.names[currentMonth]} ${currentYear}`;
+	console.debug("Calendar rendered.");
+}
+
 // Called when the previous button is pressed.
 function onPreviousButtonPressed() {
 	console.debug("Previous button pressed.");
+	renderCalendar();
 }
 
 // Called when the next button is pressed.
 function onNextButtonPressed() {
 	console.debug("Next button pressed.");
+	renderCalendar();
 }
 
 // Main function. Connect input events to the script.
