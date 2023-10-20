@@ -67,8 +67,11 @@ function previousMonth() {
 		currentYear--;
 	}
 	
-	// TODO: Fix bug with start day.
-	startDay = (startDay + 1 + getMonthLength(currentYear, currentMonth)) % Day.count;
+	startDay = (startDay - getMonthLength(currentYear, currentMonth)) % Day.count;
+	
+	if (startDay < 0) {
+		startDay += Day.count;
+	}
 }
 
 // Change the calendar to the next month.
