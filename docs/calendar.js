@@ -12,6 +12,7 @@ function Enum(...names) {
 	return Object.freeze(result);
 }
 
+// A month of a year.
 const Month = Enum(
 	"JAN",
 	"FEB",
@@ -47,26 +48,25 @@ function getMonthLength(year, month) {
 	}
 }
 
-// Test month lengths for a year.
-function testMonthLengths(year) {
-	console.debug(`In ${year}:`);
-	
-	for (let i = 0; i < Month.count; i++) {
-		console.debug(` * ${Month.names[i]} was ${getMonthLength(year, i)} days long.`);
-	}
+// Called when the previous button is pressed.
+function onPreviousButtonPressed() {
+	console.debug("Previous button pressed.");
 }
 
-// Main function.
+// Called when the next button is pressed.
+function onNextButtonPressed() {
+	console.debug("Next button pressed.");
+}
+
+// Main function. Connect input events to the script.
 function main() {
-	testMonthLengths(1900);
-	testMonthLengths(2000);
+	document.getElementById("previous").addEventListener("click", onPreviousButtonPressed);
+	document.getElementById("next").addEventListener("click", onNextButtonPressed);
 }
 
-// Call the main function when ready.
-(() => {
-	if (document.readyState === "complete" || document.readyState === "interactive") {
-		setTimeout(main, 1);
-	} else {
-		document.addEventListener("DOMContentLoaded", main);
-	}
-})();
+// Call the main function when the document is ready.
+if (document.readyState === "complete" || document.readyState === "interactive") {
+	setTimeout(main, 1);
+} else {
+	document.addEventListener("DOMContentLoaded", main);
+}
