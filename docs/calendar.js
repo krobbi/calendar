@@ -84,9 +84,24 @@ function nextMonth() {
 	}
 }
 
+// Change the calendar to the previous year.
+function previousYear() {
+	for (let i = 0; i < Month.count; i++) {
+		previousMonth();
+	}
+}
+
+// Change the calendar to the next year.
+function nextYear() {
+	for (let i = 0; i < Month.count; i++) {
+		nextMonth();
+	}
+}
+
 // Render the calendar to the document.
 function renderCalendar() {
-	document.getElementById("date").innerText = `${Month.names[currentMonth]} ${currentYear}`;
+	document.getElementById("year").innerText = `${currentYear}`;
+	document.getElementById("month").innerText = `${Month.names[currentMonth]}`;
 	const cells = document.querySelectorAll("#calendar td");
 	const monthLength = getMonthLength(currentYear, currentMonth);
 	
@@ -103,22 +118,36 @@ function renderCalendar() {
 	}
 }
 
-// Called when the previous button is pressed.
-function onPreviousButtonPressed() {
+// Called when the previous year button is pressed. Render the previous year.
+function onPreviousYearPressed() {
+	previousYear();
+	renderCalendar();
+}
+
+// Called when the next year button is pressed. Render the next year.
+function onNextYearPressed() {
+	nextYear();
+	renderCalendar();
+}
+
+// Called when the previous month button is pressed. Render the previous month.
+function onPreviousMonthPressed() {
 	previousMonth();
 	renderCalendar();
 }
 
-// Called when the next button is pressed.
-function onNextButtonPressed() {
+// Called when the next month button is pressed. Render the next month.
+function onNextMonthPressed() {
 	nextMonth();
 	renderCalendar();
 }
 
 // Main function. Connect input events to the script.
 function main() {
-	document.getElementById("previous").addEventListener("click", onPreviousButtonPressed);
-	document.getElementById("next").addEventListener("click", onNextButtonPressed);
+	document.getElementById("previous-year").addEventListener("click", onPreviousYearPressed);
+	document.getElementById("next-year").addEventListener("click", onNextYearPressed);
+	document.getElementById("previous-month").addEventListener("click", onPreviousMonthPressed);
+	document.getElementById("next-month").addEventListener("click", onNextMonthPressed);
 }
 
 // Call the main function when the document is ready.

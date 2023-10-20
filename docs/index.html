@@ -32,10 +32,15 @@
 	<body>
 		<main>
 			<h1>Calendar</h1>
-			<nav class="navigator">
-				<button aria-label="Previous" id="previous">&lt;</button>
-				<strong id="date">JAN 2000</strong>
-				<button aria-label="Next" id="next">></button>
+			<nav aria-label="Year" class="navigator">
+				<button aria-label="Previous" id="previous-year">&lt;</button>
+				<strong id="year">2000</strong>
+				<button aria-label="Next" id="next-year">></button>
+			</nav>
+			<nav aria-label="Month" class="navigator">
+				<button aria-label="Previous" id="previous-month">&lt;</button>
+				<strong id="month">JAN</strong>
+				<button aria-label="Next" id="next-month">></button>
 			</nav>
 			<table id="calendar">
 				<tr>
