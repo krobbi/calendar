@@ -12,6 +12,9 @@ function Enum(...names) {
 	return Object.freeze(result);
 }
 
+// A day of a week.
+const Day = Enum("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN");
+
 // A month of a year.
 const Month = Enum(
 	"JAN",
@@ -47,6 +50,15 @@ function getMonthLength(year, month) {
 			return 31;
 	}
 }
+
+// The current year on the calendar.
+var currentYear = 2000;
+
+// The current month on the calendar.
+var currentMonth = Month.JAN;
+
+// The day at the start of the current month on the calendar.
+var startDay = Day.SAT;
 
 // Called when the previous button is pressed.
 function onPreviousButtonPressed() {
