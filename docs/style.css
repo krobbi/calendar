@@ -90,8 +90,3 @@ h1 {
 #calendar td.disabled {
 	background-color: #333 !important;
 }
-
-#calendar td.highlighted {
-	border: 0.2em solid #ff9;
-	background-color: #885 !important;
-}
