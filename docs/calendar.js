@@ -144,43 +144,8 @@ function setMonth(month) {
 	renderCalendar();
 }
 
-// Called when the previous year button is pressed. Render the previous year.
-function onPreviousYearPressed() {
-	setYear(currentYear - 1);
-}
-
-// Called when the next year button is pressed. Render the next year.
-function onNextYearPressed() {
-	setYear(currentYear + 1);
-}
-
-// Called when the previous month button is pressed. Render the previous month.
-function onPreviousMonthPressed() {
-	if (currentMonth == Month.JAN) {
-		decrementMonth();
-		renderCalendar();
-	} else {
-		setMonth(currentMonth - 1);
-	}
-}
-
-// Called when the next month button is pressed. Render the next month.
-function onNextMonthPressed() {
-	if (currentMonth == Month.DEC) {
-		incrementMonth();
-		renderCalendar();
-	} else {
-		setMonth(currentMonth + 1);
-	}
-}
-
 // Main function. Connect input events to the script.
-function main() {
-	document.getElementById("previous-year").addEventListener("click", onPreviousYearPressed);
-	document.getElementById("next-year").addEventListener("click", onNextYearPressed);
-	document.getElementById("previous-month").addEventListener("click", onPreviousMonthPressed);
-	document.getElementById("next-month").addEventListener("click", onNextMonthPressed);
-}
+function main() {}
 
 // Call the main function when the document is ready.
 if (document.readyState === "complete" || document.readyState === "interactive") {

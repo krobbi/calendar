@@ -32,16 +32,23 @@
 	<body>
 		<main>
 			<h1>Calendar</h1>
-			<nav aria-label="Year" class="navigator">
-				<button aria-label="Previous" id="previous-year">&lt;</button>
-				<strong id="year">2000</strong>
-				<button aria-label="Next" id="next-year">></button>
-			</nav>
-			<nav aria-label="Month" class="navigator">
-				<button aria-label="Previous" id="previous-month">&lt;</button>
-				<strong id="month">JAN</strong>
-				<button aria-label="Next" id="next-month">></button>
-			</nav>
+			<form id="date">
+				<select>
+					<option>January</option>
+					<option>February</option>
+					<option>March</option>
+					<option>April</option>
+					<option>May</option>
+					<option>June</option>
+					<option>July</option>
+					<option>August</option>
+					<option>September</option>
+					<option>October</option>
+					<option>November</option>
+					<option>December</option>
+				</select>
+				<input type="number" value="2000">
+			</form>
 			<table id="calendar">
 				<tr>
 					<th>Mon</th>

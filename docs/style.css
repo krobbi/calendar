@@ -13,8 +13,8 @@ html {
 body {
 	width: 100%;
 	min-height: 100%;
-	color: #fff;
-	background-color: #011;
+	color: #000;
+	background-color: #fff;
 	font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -27,41 +27,26 @@ main {
 	min-height: 100vh;
 	margin: auto;
 	padding: 1em;
-	background-color: #022;
+	background-color: #ddd;
 }
 
-h1 {
-	font-size: 3em;
-}
-
-.navigator {
+#date {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	gap: 1em;
-	font-size: 2em;
 }
 
-.navigator button {
-	border: 0.1em solid #ff9;
-	width: 2.5em;
-	height: 2.5em;
-	color: #fff;
-	background-color: #885;
-	font-weight: bold;
-}
-
-.navigator button:hover {
-	background-color: #996;
-}
-
-.navigator button:active {
-	background-color: #aa7;
+#date input, #date select {
+	margin: 0.5em;
+	padding: 0.5em;
+	font-size: 1em;
+	border: 0.1em solid #222;
 }
 
 #calendar {
 	border-spacing: 0;
+	color: #fff;
 }
 
 #calendar, #calendar th, #calendar td {
