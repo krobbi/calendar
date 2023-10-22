@@ -147,9 +147,19 @@ function onMonthChanged(event) {
 	setMonth(Month[event.target.value]);
 }
 
+// Called when the year is changed. Set the current year.
+function onYearChanged(event) {
+	const year = parseInt(event.target.value);
+	
+	if (!isNaN(year)) {
+		setYear(year);
+	}
+}
+
 // Main function. Connect input events to the script.
 function main() {
 	document.getElementById("month").addEventListener("change", onMonthChanged);
+	document.getElementById("year").addEventListener("change", onYearChanged);
 }
 
 // Call the main function when the document is ready.
