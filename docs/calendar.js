@@ -60,9 +60,19 @@ var currentMonth = Month.JAN;
 // The day at the start of the current month on the calendar.
 var startDay = Day.SAT;
 
-// Change the calendar to the previous month.
-function previousMonth() {
-	if (--currentMonth < 0) {
+// Increment the current month.
+function incrementMonth() {
+	startDay = (startDay + getMonthLength(currentYear, currentMonth)) % Day.count;
+	
+	if (++currentMonth > Month.DEC) {
+		currentMonth = Month.JAN;
+		currentYear++;
+	}
+}
+
+// Decrement the current month.
+function decrementMonth() {
+	if (--currentMonth < Month.JAN) {
 		currentMonth = Month.DEC;
 		currentYear--;
 	}
@@ -74,27 +84,17 @@ function previousMonth() {
 	}
 }
 
-// Change the calendar to the next month.
-function nextMonth() {
-	startDay = (startDay + getMonthLength(currentYear, currentMonth)) % Day.count;
-	
-	if (++currentMonth == Month.count) {
-		currentMonth = Month.JAN;
-		currentYear++;
+// Increment the current year.
+function incrementYear() {
+	for (let i = 0; i < Month.count; i++) {
+		incrementMonth();
 	}
 }
 
-// Change the calendar to the previous year.
-function previousYear() {
+// Decrement the current year.
+function decrementYear() {
 	for (let i = 0; i < Month.count; i++) {
-		previousMonth();
-	}
-}
-
-// Change the calendar to the next year.
-function nextYear() {
-	for (let i = 0; i < Month.count; i++) {
-		nextMonth();
+		decrementMonth();
 	}
 }
 
@@ -118,28 +118,60 @@ function renderCalendar() {
 	}
 }
 
+// Set the current year.
+function setYear(year) {
+	while (year > currentYear) {
+		incrementYear();
+	}
+	
+	while (year < currentYear) {
+		decrementYear();
+	}
+	
+	renderCalendar();
+}
+
+// Set the current month.
+function setMonth(month) {
+	while (month > currentMonth) {
+		incrementMonth();
+	}
+	
+	while (month < currentMonth) {
+		decrementMonth();
+	}
+	
+	renderCalendar();
+}
+
 // Called when the previous year button is pressed. Render the previous year.
 function onPreviousYearPressed() {
-	previousYear();
-	renderCalendar();
+	setYear(currentYear - 1);
 }
 
 // Called when the next year button is pressed. Render the next year.
 function onNextYearPressed() {
-	nextYear();
-	renderCalendar();
+	setYear(currentYear + 1);
 }
 
 // Called when the previous month button is pressed. Render the previous month.
 function onPreviousMonthPressed() {
-	previousMonth();
-	renderCalendar();
+	if (currentMonth == Month.JAN) {
+		decrementMonth();
+		renderCalendar();
+	} else {
+		setMonth(currentMonth - 1);
+	}
 }
 
 // Called when the next month button is pressed. Render the next month.
 function onNextMonthPressed() {
-	nextMonth();
-	renderCalendar();
+	if (currentMonth == Month.DEC) {
+		incrementMonth();
+		renderCalendar();
+	} else {
+		setMonth(currentMonth + 1);
+	}
 }
 
 // Main function. Connect input events to the script.
