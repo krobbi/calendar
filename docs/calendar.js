@@ -100,8 +100,6 @@ function decrementYear() {
 
 // Render the calendar to the document.
 function renderCalendar() {
-	document.getElementById("year").innerText = `${currentYear}`;
-	document.getElementById("month").innerText = `${Month.names[currentMonth]}`;
 	const cells = document.querySelectorAll("#calendar td");
 	const monthLength = getMonthLength(currentYear, currentMonth);
 	
@@ -118,19 +116,6 @@ function renderCalendar() {
 	}
 }
 
-// Set the current year.
-function setYear(year) {
-	while (year > currentYear) {
-		incrementYear();
-	}
-	
-	while (year < currentYear) {
-		decrementYear();
-	}
-	
-	renderCalendar();
-}
-
 // Set the current month.
 function setMonth(month) {
 	while (month > currentMonth) {
@@ -144,8 +129,28 @@ function setMonth(month) {
 	renderCalendar();
 }
 
+// Set the current year.
+function setYear(year) {
+	while (year > currentYear) {
+		incrementYear();
+	}
+	
+	while (year < currentYear) {
+		decrementYear();
+	}
+	
+	renderCalendar();
+}
+
+// Called when the month is changed. Set the current month.
+function onMonthChanged(event) {
+	setMonth(Month[event.target.value]);
+}
+
 // Main function. Connect input events to the script.
-function main() {}
+function main() {
+	document.getElementById("month").addEventListener("change", onMonthChanged);
+}
 
 // Call the main function when the document is ready.
 if (document.readyState === "complete" || document.readyState === "interactive") {
