@@ -15,7 +15,8 @@ method of packaging this, and there are almost certainly libraries that already
 do this.
 
 I would recommend using the built-in `Date` library, but this is just a nice
-little coding challenge that avoids using it.
+little coding challenge that avoids using it. The library is only used once to
+initialize the calendar to the current date.
 
 # License
 Released under the MIT License:  

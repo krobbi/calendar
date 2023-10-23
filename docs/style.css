@@ -30,6 +30,10 @@ main {
 	background-color: #ddd;
 }
 
+p, span {
+	margin: 0.5em;
+}
+
 #date {
 	display: flex;
 	flex-direction: row;
