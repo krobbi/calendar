@@ -52,13 +52,13 @@ function getMonthLength(year, month) {
 }
 
 // The current year on the calendar.
-var currentYear = 2000;
+var currentYear = 2024;
 
 // The current month on the calendar.
 var currentMonth = Month.JAN;
 
 // The day at the start of the current month on the calendar.
-var startDay = Day.SAT;
+var startDay = Day.MON;
 
 // Increment the current month.
 function incrementMonth() {
